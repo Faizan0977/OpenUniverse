@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    The MIT License
+    Copyright © 2025 OpenUniverse
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.ou</groupId>
+    <artifactId>ou</artifactId>
+    <version>${revision}</version>
+    <name>OpenUniverse</name>
+    <url>https://github.com/ou-org/OpenUniverse</url>
+    <description>OpenUnvierse — The UaC (Universe as Code) platform</description>
+    <packaging>jar</packaging>
+    <!-- License Information -->
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <properties>
+        <revision>${env.OU_VERSION}</revision>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <exec.mainClass>org.ou.main.Main</exec.mainClass>
+        <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss.SSS'Z'</maven.build.timestamp.format>
+    </properties>
+    <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit -->
+        <!-- License(s): BSD 3-clause -->
+        <!-- License(s): EDL 1.0 -->
+        <dependency>
+            <groupId>org.eclipse.jgit</groupId>
+            <artifactId>org.eclipse.jgit</artifactId>
+            <version>7.0.0.202409031743-r</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <!-- License(s): Apache 2.0 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.18.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml -->
+        <!-- License(s): Apache 2.0 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>2.18.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.18.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
+        <!-- License(s): Apache 2.0 -->
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.solr/solr-solrj -->
+        <!-- License(s): Apache 2.0 -->
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>9.8.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.solr/solr-core -->
+        <!-- License(s): Apache 2.0 -->
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-core</artifactId>
+            <version>9.8.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
+        <!-- License(s): Apache 2.0 -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.5.0-rc2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk18on -->
+        <!-- License(s): BouncyCastle -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk18on</artifactId>
+            <version>1.82</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcpg-jdk18on -->
+        <!-- License(s): Apache 2.0 -->
+        <!-- License(s): BouncyCastle -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpg-jdk18on</artifactId>
+            <version>1.82</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcpkix-jdk18on -->
+        <!-- License(s): BouncyCastle -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk18on</artifactId>
+            <version>1.82</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.jitsi/ice4j -->
+        <!-- License(s): Apache 2.0 -->
+        <dependency>
+            <groupId>org.jitsi</groupId>
+            <artifactId>ice4j</artifactId>
+            <version>3.2-9-gb64c86f</version>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/com.eternitywall/java-opentimestamps -->
+        <!-- LGPL 3.0 -->        	
+        <dependency>
+            <groupId>com.eternitywall</groupId>
+            <artifactId>java-opentimestamps</artifactId>
+            <version>1.20</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.9.3.0</version> <!-- Check for latest: https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-maven-plugin -->
+                <executions>
+                    <execution>
+                        <phase>verify</phase> <!-- Run during Maven's verify phase -->
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <failOnError>false</failOnError> <!-- Fail build on SpotBugs violations -->
+                    <effort>Max</effort> <!-- Options: Min, Default, Max -->
+                    <threshold>Low</threshold> <!-- Options: High, Medium, Low -->
+                    <includeTests>true</includeTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>io.github.git-commit-id</groupId>
+                <artifactId>git-commit-id-maven-plugin</artifactId>
+                <version>5.0.0</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                        <phase>initialize</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+                    <includeOnlyProperties>
+                        <includeOnlyProperty>^git.build.(time|version)$</includeOnlyProperty>
+                        <includeOnlyProperty>^git.commit.id.(abbrev|full)$</includeOnlyProperty>
+                    </includeOnlyProperties>
+                    <commitIdGenerationMode>full</commitIdGenerationMode>
+                </configuration>
+            </plugin>
+            <plugin>
+                <!-- goal: license:format -->
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>4.6</version>
+                <configuration>
+                    <properties>
+                        <year>2025</year>
+                        <owner>OpenUniverse</owner>
+                    </properties>
+                    <licenseSets>
+                        <licenseSet>
+                            <!--
+                         <header>com/mycila/maven/plugin/license/templates/MIT.txt</header>
+                            -->
+                            <header>MIT.txt</header>
+                            <excludes>
+                                <exclude>**/README</exclude>
+                                <exclude>src/test/resources/**</exclude>
+                                <exclude>src/main/resources/**</exclude>
+                            </excludes>
+                        </licenseSet>
+                    </licenseSets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>src</classifier>
+                            <attach>false</attach>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                            <mainClass>${exec.mainClass}</mainClass>                            
+                        </manifest>
+                        <manifestEntries>
+                            <Build-Time>${maven.build.timestamp}</Build-Time>                           
+                            <Implementation-Title>OpenUnvierse — The UaC (Universe as Code) platform</Implementation-Title>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Implementation-Vendor>OpenUnvierse project</Implementation-Vendor>
+                            <Multi-Release>true</Multi-Release>
+                        </manifestEntries>	
+                    </archive>
+                    <attach>false</attach>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>                
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jarsigner-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>sign-jar</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <archive>${project.build.directory}/${project.build.finalName}.jar</archive>
+                    <keystore>${env.SIGN_JAR_KEYSTORE}</keystore>
+                    <storetype>${env.SIGN_JAR_STORETYPE}</storetype>
+                    <storepass>${env.SIGN_JAR_STOREPASS}</storepass>
+                    <alias>${env.SIGN_JAR_ALIAS}</alias>
+                    <keypass>${env.SIGN_JAR_KEYPASS}</keypass>
+                    <tsa>${env.SIGN_JAR_TSA}</tsa>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>wrap-jar</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>sh</executable>
+                            <arguments>
+                                <argument>-c</argument>
+                                <argument>
+                                    <!--
+## Java Search Order
+
+1. **Embedded JRE Directory (`./jre/bin/java`)**
+
+   - The script first checks if there's a `jre` directory in the same location as the script (`./jre/bin/java`).
+   - If this Java executable exists and is executable, it takes top priority.
+   - This allows bundling a dedicated Java runtime with your application.
+   - **Example:**
+     ```
+     your-app/
+     ├── ou
+     └── jre/
+         └── bin/
+             └── java
+     ```
+
+2. **Custom Java via `OU_JAVA_HOME` Environment Variable**
+
+   - If no embedded JRE is found, the script checks the `OU_JAVA_HOME` environment variable.
+   - If set, the script uses `$OU_JAVA_HOME/bin/java`.
+   - **Example:**
+     ```bash
+     export OU_JAVA_HOME=/path/to/specific/java
+     ```
+
+3. **Java from `JAVA_HOME` Environment Variable**
+
+   - If `OU_JAVA_HOME` is not set, the script checks for `JAVA_HOME`.
+   - If set, the script uses `$JAVA_HOME/bin/java`.
+   - **Example:**
+     ```bash
+     export JAVA_HOME=/path/to/java
+     ```
+
+4. **System Java (`java` in `PATH`)**
+
+   - If neither environment variable is set, the script tries the system `java` via `java -version`.
+   - If valid, `java` is used as-is.
+   - **Example:**
+     ```bash
+     java -version
+     ```
+
+5. **Failure to Find Java**
+
+   - If no valid Java executable is found by any method, the script outputs:
+     ```
+     Java not found.
+     ```
+   - Then exits with status code `1`.
+                                    -->
+<![CDATA[
+          mkdir -p target && \
+          cat src/main/scripts/ou.sh target/ou-${project.version}.jar > target/ou && \
+          chmod +x target/ou
+          ]]>                                </argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>generate-sha256</id>
+                        <phase>verify</phase>
+                        <configuration>
+                            <target>
+                                <checksum file="${project.build.directory}/${project.build.finalName}-src.jar"
+                                          algorithm="SHA-256"
+                                          pattern="{0} {1}"
+                                          fileext=".sha256"
+                                          forceOverwrite="true"/>
+                                <checksum file="${project.build.directory}/${project.build.finalName}.jar"
+                                          algorithm="SHA-256"
+                                          pattern="{0} {1}"
+                                          fileext=".sha256"
+                                          forceOverwrite="true"/>
+                                <checksum file="${project.build.directory}/ou"
+                                          algorithm="SHA-256"
+                                          pattern="{0} {1}"
+                                          fileext=".sha256"
+                                          forceOverwrite="true"/>
+
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.9.3.0</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
+</project>

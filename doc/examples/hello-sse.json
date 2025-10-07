@@ -1,0 +1,67 @@
+[
+   {
+      "head": {
+         "doc_spec": "OpenUniverseSpecVer-1.01",
+         "doc_type": "root",
+         "name": "Root",
+         "disabled": false,
+         "description": "Controls execution of OpenUniverse and JVM health triggers using tag and priority filters.",
+         "tags": [
+            "example",
+            "hello"
+         ]
+      },
+      "triggers": "tags:(example AND hello AND monitoring) AND attr.priority:[03 TO *]",
+      "export_targets": [
+         {
+          "id": "export_target_1",
+            "disabled": false,
+            "command": {
+               "cmd": "!/my-scripts/sse.py",
+               "args": [
+                  "localhost",
+                  "8080"
+               ]
+            }
+         }
+      ],
+      "export_dmqs": [
+         {
+            "cmd": "!/my-scripts/dmq.py",
+            "args": [
+               "/tmp/my-dmq.ndjson"
+            ]
+         }
+      ]
+   },
+   {
+      "head": {
+         "doc_spec": "OpenUniverseSpecVer-1.01",
+         "doc_type": "triggers/event_scheduler",
+         "name": "heartbit_trigger",
+         "description": "Schedules recurring health events for OpenUniverse and JVM monitoring.",
+         "tags": [
+            "example",
+            "hello",
+            "health",
+            "system",
+            "monitoring"
+         ],
+         "attr": {
+            "priority": "07"
+         }
+      },
+      "schedulers_list": [
+         {
+            "description": "Runs every 5 seconds. Produce OpenUniverse instance health data.",
+            "event_type": "health_ou",
+            "cron_expression": "0/5 * * * * ?"
+         },
+         {
+            "description": "Runs every 10 seconds. Produce JVM instance health data.",
+            "event_type": "health_jvm",
+            "cron_expression": "0/10 * * * * ?"
+         }
+      ]
+   }
+]

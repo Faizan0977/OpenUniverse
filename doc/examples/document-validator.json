@@ -1,0 +1,78 @@
+[
+   {
+      "head": {
+         "doc_spec": "OpenUniverseSpecVer-1.01",
+         "doc_type": "root",
+         "name": "Root",
+         "disabled": false,
+         "description": "Controls execution of OpenUniverse and JVM health triggers using tag and priority filters.",
+         "tags": [
+            "example",
+            "hello"
+         ]
+      },
+      "decrypt_command": {
+         "cmd": "!/my-scripts/decrypt.py",
+         "error_log_file": "/tmp/err.txt",
+         "instances_count": 3
+      },
+      "events": "tags:(example AND check_file) AND attr.check:size",
+      "triggers": "tags:(example AND hello AND monitoring) AND attr.priority:[03 TO *]"
+   },
+   {
+      "head": {
+         "doc_spec": "OpenUniverseSpecVer-1.01",
+         "doc_type": "event",
+         "name": "InvalidFileSize",
+         "description": "яяяяяя ddddddd",
+         "tags": [
+            "example",
+            "check_file",
+            "validate"
+         ],
+         "attr": {
+            "config": "true",
+            "check": "size"
+         }
+      },
+      "processable": true
+   },
+   {
+      "head": {
+         "doc_spec": "OpenUniverseSpecVer-1.01",
+         "doc_type": "triggers/event_provider",
+         "name": "heartbit_trigger",
+         "description": "Schedules recurring health events for OpenUniverse and JVM monitoring.",
+         "tags": [
+            "example",
+            "hello",
+            "health",
+            "system",
+            "monitoring"
+         ],
+         "attr": {
+            "priority": "07"
+         },
+         "validator_сommands": [
+            {
+               "cmd": "!/my-scripts/validator.py",
+               "error_log_file": "/tmp/err.txt",
+               "instances_count": 1
+            }
+         ]
+      },
+      "properties": {
+         "log-file": "/tmp/our-error-log.txt"
+      },
+      "command": {
+         "cmd": "!/my-scripts/file_size_monitor.py",
+         "error_log_file": "${log-file}",
+         "instances_count": 1,
+         "args": [
+            "${encrypted:our encrypted text}",
+            "5",
+            "8"
+         ]
+      }
+   }
+]

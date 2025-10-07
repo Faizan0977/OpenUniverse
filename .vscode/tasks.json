@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Maven OU",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "type": "shell",
+            "command": "SIGN_JAR_KEYSTORE=${HOME}/HelloUniverse/MyQuickAndDirtyKeystore/keystore.p12 mvn clean verify -e",
+            "options": {
+                "env": {
+                    "OU_VERSION": "1.0.22",
+                    "SIGN_JAR_STORETYPE": "PKCS12",
+                    "SIGN_JAR_ALIAS": "signing_alias",
+                    "SIGN_JAR_KEYPASS": "your_password",
+                    "SIGN_JAR_STOREPASS": "your_password",
+                    "SIGN_JAR_TSA": "http://timestamp.digicert.com"
+                }
+            },
+            "problemMatcher": []
+        }
+    ]
+}
