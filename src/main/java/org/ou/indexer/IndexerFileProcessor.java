@@ -22,6 +22,7 @@
  */
 package org.ou.indexer;
 
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -31,13 +32,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hjson.JsonValue;
 import org.ou.common.constants.IConstants;
 import org.ou.common.constants.IDocConst;
+import org.ou.common.constants.IDocFileExt;
 import org.ou.common.constants.IDocSpec;
 import org.ou.common.constants.IDocTypes;
 import org.ou.common.constants.IMessageDigestAlg;
 import org.ou.common.constants.IMsg;
 import org.ou.common.utils.CommonUtils;
+import org.ou.common.utils.FileUtils;
 import org.ou.common.utils.GitUtils;
 import org.ou.to.AbstractTo;
 import org.ou.to.CalendarDocTo;
@@ -84,11 +88,41 @@ public class IndexerFileProcessor implements IFileProcessor {
     @Override
     public Map<String /* doc key */, AbstractTo> process(Path filePath) throws Exception {
         String docFile = rootPath.relativize(filePath).toString();
-        ObjectMapper ompr = CommonUtils.getObjectMapperByFileExt(docFile);
+        String docFileExt = FileUtils.getFileExt(docFile);
+        ObjectMapper ompr = CommonUtils.getObjectMapperByFileExt(docFileExt);
         if (ompr == null) {
             return new HashMap<>(0);
         }
-        byte[] docBs = Files.readAllBytes(filePath);
+        byte[] docBs;
+
+        boolean hjson = IDocFileExt.HJSON.equals(docFileExt);
+        boolean ndjson = IDocFileExt.NDJSON.equals(docFileExt);
+        if (hjson || ndjson) { // convert to JSON
+            String docString = Files.readString(filePath, StandardCharsets.UTF_8);
+            String jsonString = null;
+            if (hjson) {
+                jsonString = JsonValue.readHjson(docString).toString();
+            } else if (ndjson) {
+                StringBuilder sb = new StringBuilder();
+                String[] lines = docString.split("\n");
+                sb.append("[");
+                for (int i = 0; i < lines.length; i++) {
+                    String line = lines[i].strip();
+                    if (line.isEmpty()) {
+                        continue;
+                    }
+                    if (i > 0) {
+                        sb.append(",");
+                    }
+                    sb.append(line);
+                }
+                sb.append("]");
+                jsonString = sb.toString();
+            }
+            docBs = jsonString.getBytes(StandardCharsets.UTF_8);
+        } else {
+            docBs = Files.readAllBytes(filePath);
+        }
         String docBlobSha1 = GitUtils.computeGitBlobSHA1(docBs);
         //String docSha1 = GitUtils.computeSHA1(docBs);
         String docSha1 = CommonUtils.digest(IMessageDigestAlg.SHA1, docBs);
@@ -132,7 +166,7 @@ public class IndexerFileProcessor implements IFileProcessor {
         if (headMap == null) {
             return null;
         }
-        
+
         String docSpec = (String) headMap.get(IDocConst.HEAD_DOC_SPEC);
         if (docSpec == null) {
             return null;

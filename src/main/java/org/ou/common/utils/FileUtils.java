@@ -34,14 +34,16 @@ import java.util.stream.Stream;
 import org.ou.common.constants.ISystemProperties;
 
 /**
- * <p>FileUtils class.</p>
+ * <p>
+ * FileUtils class.</p>
  *
  * @since 1.0.21
  */
 public class FileUtils {
 
     /**
-     * <p>deleteDir.</p>
+     * <p>
+     * deleteDir.</p>
      *
      * @param dir a {@link java.nio.file.Path} object
      * @throws java.io.IOException if any.
@@ -55,7 +57,8 @@ public class FileUtils {
     }
 
     /**
-     * <p>convertToRealPath.</p>
+     * <p>
+     * convertToRealPath.</p>
      *
      * @param basePath
      * @param relativePath a {@link java.lang.String} object
@@ -98,5 +101,13 @@ public class FileUtils {
         } catch (NoSuchFileException e) {
             return Path.of(e.getFile());
         }
+    }
+
+    public static String getFileExt(String name) {
+        int i = name.lastIndexOf('.');
+        if (i <= 0 || i == name.length() - 1) {
+            return ""; // no dot, dot is first char, or ends with dot
+        }
+        return name.substring(i + 1);
     }
 }

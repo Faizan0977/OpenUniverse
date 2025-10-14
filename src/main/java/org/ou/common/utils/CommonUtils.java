@@ -172,10 +172,22 @@ public class CommonUtils {
      * @param file
      * @return
      */
-    public static ObjectMapper getObjectMapperByFileExt(String file) {
-        if (file.endsWith(IDocFileExt.JSON_EXT) || file.endsWith(IDocFileExt.JS_EXT)) {
+    public static ObjectMapper getObjectMapperByFileExt(String fileExt) {
+        if ( //
+                IDocFileExt.JSON.equals(fileExt) //
+                || //
+                IDocFileExt.JS.equals(fileExt) //
+                || //
+                IDocFileExt.HJSON.equals(fileExt) //
+                || //
+                IDocFileExt.NDJSON.equals(fileExt) //
+                ) {
             return CommonUtils.om;
-        } else if (file.endsWith(IDocFileExt.YAML_EXT) || file.endsWith(IDocFileExt.YML_EXT)) {
+        } else if ( //
+                IDocFileExt.YAML.equals(fileExt) //
+                || //
+                IDocFileExt.YML.equals(fileExt) //
+                ) {
             return CommonUtils.omYaml;
         }
         return null;

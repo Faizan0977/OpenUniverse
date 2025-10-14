@@ -29,15 +29,21 @@ package org.ou.common.constants;
  */
 public interface IDocFileExt {
 
-    /** Constant <code>JS_EXT=".js"</code> */
-    String JS_EXT = ".js";
+    /** Constant <code>JS="js"</code> */
+    String JS = "js";
 
-    /** Constant <code>JSON_EXT=".json"</code> */
-    String JSON_EXT = ".json";
+    /** Constant <code>JSON="json"</code> */
+    String JSON = "json";
 
-    /** Constant <code>YAML_EXT=".yaml"</code> */
-    String YAML_EXT = ".yaml";
+    /** Constant <code>HJSON="hjson"</code> */
+    String HJSON = "hjson";
 
-    /** Constant <code>YML_EXT=".yml"</code> */
-    String YML_EXT = ".yml";
+    /** Constant <code>NDJSON="ndjson"</code> */
+    String NDJSON = "ndjson";
+
+    /** Constant <code>YAML="yaml"</code> */
+    String YAML = "yaml";
+
+    /** Constant <code>YML="yml"</code> */
+    String YML = "yml";
 }
