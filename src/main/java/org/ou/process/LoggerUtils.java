@@ -134,6 +134,8 @@ public class LoggerUtils extends Thread {
         }
 
         Map<String, Object> treeMap = new TreeMap<>(mapE);
+        
+        treeMap.put(IRecordConst.OUT_RECORD_MAGIC_BYTES_KEY, IRecordConst.OUT_RECORD_MAGIC_BYTES_VALUE);
 
         if (MainProcess.signatureSettings != null && MainProcess.signatureSettings.privateKey != null) {
             treeMap.put(IRecordConst.OUT_RECORD_RECORD_SIGNATURE_KEY, null);

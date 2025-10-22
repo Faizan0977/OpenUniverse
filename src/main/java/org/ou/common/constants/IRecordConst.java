@@ -38,6 +38,8 @@ public interface IRecordConst {
     String RECORD_TYPE_VALUE_TRIGGER = "trigger";
     String RECORD_TYPE_VALUE_PROCESSOR = "processor";
 
+    String OUT_RECORD_MAGIC_BYTES_KEY = "magic_l";
+    long OUT_RECORD_MAGIC_BYTES_VALUE = 2518146470L; // <- 0x9617dda6 <- "9617dda60ca4c58b88160510c68b6406e73ef0dd27cc525e4a2c4926552e3e97" <- SHA256("OpenUniverse")
     
     String OUT_RECORD_HASH_KEY = "record_hash_s";
     
